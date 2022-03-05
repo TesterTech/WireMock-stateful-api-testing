@@ -1,0 +1,108 @@
+{
+  "mappings": [
+    {
+      "scenarioName": "to do list",
+      "newScenarioState": "started",
+      "request": {
+        "method": "GET",
+        "url": "/info"
+      },
+      "response": {
+        "status": 200,
+        "body" : "Yes! Mock is working"
+      }
+    },
+    {
+      "scenarioName": "to do list",
+      "newScenarioState": "clean state",
+      "request": {
+        "method": "DELETE",
+        "url": "/"
+      },
+      "response": {
+        "status": 200,
+        "body": "Cleaned the state"
+      }
+    },
+    {
+      "scenarioName": "to do list",
+      "requiredScenarioState": "clean state",
+      "request": {
+        "method": "GET",
+        "url": "/"
+      },
+      "response": {
+        "status": 200,
+        "body": "[]"
+      }
+    },
+    {
+      "scenarioName": "to do list",
+      "requiredScenarioState": "filled state",
+      "request": {
+        "method": "GET",
+        "url": "/"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\": \"aa-bb-cc-dd\",\"title\": \"Mocked Todo\",\"completed\": depends,\"url\": \"http://example.org\",\"order\": null }"
+      }
+    },
+    {
+      "scenarioName": "to do list",
+      "requiredScenarioState": "filled state",
+      "request": {
+        "method": "GET",
+        "url": "/aa-bb-cc-dd"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\": \"aa-bb-cc-dd\",\"title\": \"Specific Mocked Todo\",\"completed\": true,\"url\": \"http://example.org\",\"order\": null }"
+      }
+    },
+    {
+      "scenarioName": "to do list",
+      "requiredScenarioState": "updated state",
+      "request": {
+        "method": "GET",
+        "url": "/"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\": \"aa-bb-cc-dd\",\"title\": \"Updated Mocked Todo\",\"completed\": true,\"url\": \"http://example.org\",\"order\": null }"
+      }
+    },
+    {
+      "scenarioName": "to do list",
+      "requiredScenarioState": "clean state",
+      "newScenarioState": "filled state",
+      "request": {
+        "method": "POST",
+        "url": "/",
+        "bodyPatterns": [
+          { "contains": "\"title\": \"" }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\": \"aa-bb-cc-dd\",\"title\": \"Mocked Todo\", \"completed\": false,\"url\": \"http://example.org\",\"order\": null }"
+      }
+    },
+    {
+      "scenarioName": "to do list",
+      "requiredScenarioState": "filled state",
+      "newScenarioState": "updated state",
+      "request": {
+        "method": "PATCH",
+        "url": "/aa-bb-cc-dd",
+        "bodyPatterns": [
+          { "contains": "\"title\": \"" }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\": \"aa-bb-cc-dd\",\"title\": \"Updated Mocked Todo\",\"completed\": true,\"url\": \"http://example.org\",\"order\": null }"
+      }
+    }
+  ]
+}

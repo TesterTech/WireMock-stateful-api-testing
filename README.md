@@ -6,7 +6,7 @@ This script makes use of wiremock standalone jar
 - To record start WireMock standalone the following way
 ```shell
 java -jar wiremock-jre8-standalone-<version>.jar --port <7777> \
-  --proxy-all="http://<proxy address>:<potrt>" \
+  --proxy-all="http://<proxy address>:<port>" \
   --record-mappings \ 
   --verbose 
 ```
